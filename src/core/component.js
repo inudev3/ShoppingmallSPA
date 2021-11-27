@@ -47,7 +47,7 @@ export class Component{
 
         const routes = [
             { path: "/web", view: () => new ProductList(document.querySelector(".ProductListPage"))},
-            { path: `/web/products/${id}`,  view:()=> new ProductDetail(document.querySelector(".ProductDetailPage"), {productId}) },
+            { path: `/web/products/${id}`,  view:()=> new ProductDetail(document.querySelector(".ProductDetailPage"), {}) },
             { path: "/web/cart", view: () => new Cart(document.querySelector(".CartPage")) },
         ];
 
