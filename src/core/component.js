@@ -9,13 +9,14 @@ export class Component{
 
         this.$el=el;
         this.$props= props;
-        this.setup()
+        this.setup();
     }
-    setup(){
+
+    async setup(){
         this.render()
         this.setEvent()
         this.$el.hidden=false;
-        this.mount()
+
     }
     render(){
         this.$el.innerHTML = this.template();
@@ -42,11 +43,11 @@ export class Component{
             }
         );
     }
-    async router (productId){
+    async router (id=""){
 
         const routes = [
             { path: "/web", view: () => new ProductList(document.querySelector(".ProductListPage"))},
-            { path: `/web/products/${productId}`,  view:()=> new ProductDetail(document.querySelector(".ProductDetailPage"), {productId}) },
+            { path: `/web/products/${id}`,  view:()=> new ProductDetail(document.querySelector(".ProductDetailPage"), {productId}) },
             { path: "/web/cart", view: () => new Cart(document.querySelector(".CartPage")) },
         ];
 
@@ -65,9 +66,9 @@ export class Component{
         }
         match.route.view();
     }
-    navigateTo(url, state){
+    navigateTo(url, id="" ){
         history.pushState({...state}, null, url);
-        this.router(state);
+        this.router(id);
         this.$el.hidden=true;
     };
 

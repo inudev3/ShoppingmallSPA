@@ -10,6 +10,7 @@ export class ProductList extends Component{
         this.$el.hidden=false;
     }
 
+
     template(){
         return`
         <h1>상품목록</h1>
